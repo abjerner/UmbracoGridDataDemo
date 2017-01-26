@@ -1,0 +1,67 @@
+﻿.SkriftContactPersons {
+
+    @import "_table.less";
+
+
+    label.title {
+        display: block;
+
+        input {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+
+    .table {
+
+        input {
+            max-width: initial;
+            border-color: #ececec;
+            border-color: #fff;
+            transition: border linear .2s,box-shadow linear .2s;
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        td:hover {
+            input {
+                border-color: #ccc;
+            }
+        }
+    }
+
+    .actions {
+        margin-top: 5px;
+    }
+
+    .contacts-sortable-placeholder {
+        border: inherit;
+        background-color: #d0e7f1 !important;
+        font-size: 14px;
+        font-family: inherit;
+        height: 47px;
+    }
+
+    .ui-sortable-helper {
+        display: none;
+    }
+
+}
+
+.umb-grid {
+    .umb-control.-active {
+        .SkriftContactPersons {
+            padding: 10px;
+        }
+    }
+}

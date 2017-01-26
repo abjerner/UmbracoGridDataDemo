@@ -1,0 +1,8 @@
+﻿@using Skybrud.Umbraco.GridData.Rendering
+@using Skybrud.Umbraco.GridData.Values
+
+@inherits UmbracoViewPage<GridControlWrapper<GridControlEmbedValue>>
+
+<div class="video-wrapper">
+    @Html.Raw(Model.Value)
+</div>

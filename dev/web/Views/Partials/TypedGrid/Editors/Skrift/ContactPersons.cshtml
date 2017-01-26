@@ -1,0 +1,42 @@
+﻿@using Skybrud.Umbraco.GridData.Rendering
+@using SkriftGridDemo.Grid.Value.ContactPersons
+@using SkriftGridDemo.Grid.Config.ContactPersons
+@inherits UmbracoViewPage<GridControlWrapper<SkriftGridControlContactPersonsValue, SkriftGridEditorContactPersonsConfig>>
+
+@{
+    
+    <div class="contacts">
+        
+        @if (Model.Config.Title.Show) {
+            <h3>@(Model.Value.HasTitle ? Model.Value.Title : Model.Config.Title.Default)</h3>
+        }
+        
+        <div class="contacts-items">
+            @foreach (var item in Model.Value.Items) {
+                <div class="contacts-item">
+                    <p>
+                        <strong>@item.Name</strong>
+                    </p>
+                    @if (item.HasTitle) {
+                        <p>
+                            <em>@item.Title</em>
+                        </p>
+                    }
+                    @if (item.HasEmail) {
+                        <p>
+                            <a href="mailto:@item.Email">@item.Email</a>
+                        </p>
+                    }
+                </div>
+            }
+        </div>
+
+    </div>
+    
+    <style>
+        .contacts h3 { margin: 0 0 35px 0; }
+        .contacts .contacts-items { display: flex; flex-wrap: wrap; margin-top: -50px; }
+        .contacts .contacts-item { margin-top: 50px; width: 25%; }
+    </style>
+    
+}

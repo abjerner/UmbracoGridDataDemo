@@ -1,0 +1,84 @@
+﻿@using Skybrud.Umbraco.GridData
+@using Skybrud.Umbraco.GridData.Extensions
+
+@inherits UmbracoViewPage<GridRow>
+
+@*<pre>@GridUtils.GetFileVersion()</pre>*@
+
+<div @RenderElementAttributes(Model)>
+    <div class="container">
+        <div class="row clearfix">
+            @foreach (GridArea area in Model.Areas) {
+                <div class="col-md-@area.Grid column">
+                    <div @RenderElementAttributes(area)>
+                        @foreach (GridControl control in area.Controls) {
+                            switch (control.Editor.Alias) {
+                                case "banner_headline":
+                                case "banner_tagline":
+                                    @Html.RenderGridControl(control)
+                                    //@Html.RenderGridControl(control, "Text")
+                                    //@Html.RenderGridControl(control, "TypedGrid/Editors/Text")
+                                    break;
+                                case "rte":
+                                    @Html.RenderGridControl(control)
+                                    //@Html.RenderGridControl(control, "RichText")
+                                    //@Html.RenderGridControl(control, "TypedGrid/Editors/RichText")
+                                    break;
+                                case "media":
+                                case "media_wide":
+                                case "media_wide_cropped":
+                                    @Html.RenderGridControl(control)
+                                    //@Html.RenderGridControl(control, "Media")
+                                    //@Html.RenderGridControl(control, "TypedGrid/Editors/Media")
+                                    break;
+                                case "embed":
+                                    @Html.RenderGridControl(control)
+                                    //@Html.RenderGridControl(control, "Embed")
+                                    //@Html.RenderGridControl(control, "TypedGrid/Editors/Embed")
+                                    break;
+                                case "SkriftContactPersons":
+                                    @Html.RenderGridControl(control)
+                                    //@Html.RenderGridControl(control, "TypedGrid/Editors/Skrift/ContactPersons")
+                                    break;
+                                default:
+                                    // This is just here for debugging. Also - just for fun - try to comment out all other cases.
+                                    <pre>@control.Editor.Alias (@(control.Value.GetType()) (@control.Editor.Config)</pre>
+                                    break;
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@functions {
+
+    public static MvcHtmlString RenderElementAttributes(GridElement element) {
+
+        List<string> attrs = new List<string>();
+
+        if (element.HasConfig) {
+            foreach (GridDictionaryItem item in element.Config) {
+                attrs.Add(item.Key + "='" + item.Value + "'");
+            }
+        }
+
+        if (element.HasStyles) {
+
+            List<string> cssVals = new List<string>();
+
+            foreach (GridDictionaryItem item in element.Styles) {
+                cssVals.Add(item.Key + ":" + item.Value + ";");
+            }
+
+            attrs.Add("style='" + string.Join(" ", cssVals) + "'");
+
+        }
+
+        return new MvcHtmlString(string.Join(" ", attrs));
+
+    }
+
+}

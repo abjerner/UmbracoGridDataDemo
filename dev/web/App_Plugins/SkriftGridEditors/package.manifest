@@ -1,0 +1,24 @@
+﻿{
+    "gridEditors": [
+        {
+            "name": "Contact persons",
+            "alias": "SkriftContactPersons",
+            "view": "/App_Plugins/SkriftGridEditors/Views/ContactPersons.html",
+            "icon": "icon-users",
+            "config": {
+                "title": {
+                    "show": true,
+                    "placeholder": "Enter the title here",
+                    "default": "Contact persons"
+                },
+                "limit": 15
+            }
+        }
+    ],
+    "javascript": [
+        "/App_Plugins/SkriftGridEditors/Controllers/ContactPersons.js"
+    ],
+    "css": [
+        "/App_Plugins/SkriftGridEditors/Styles/Default.css"
+    ]
+}

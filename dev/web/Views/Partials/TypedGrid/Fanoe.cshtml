@@ -1,0 +1,31 @@
+﻿@using System.Web.Mvc.Html
+@using Skybrud.Umbraco.GridData
+@using Skybrud.Umbraco.GridData.Extensions
+@inherits UmbracoViewPage<GridDataModel>
+
+@{
+
+    // Stop any further rendering since the model isn't valid
+    if (!Model.IsValid) { return; }
+
+    // Compared to "Fanoe.cshtml" from the Fanoe starter kit, it will check and handle in different ways if is just a
+    // single section or multiple sections. This examples doesn't since the Umbraco UI doesn't really allow users to
+    // add more than one section.
+
+    <div class="umb-grid">
+        @foreach (GridSection section in Model.Sections) {
+            <div class="grid-section">
+                @foreach (GridRow row in section.Rows.Where(x => x.IsValid)) {
+
+                    // At Skybrud.dk we normally use a common view for rendering the row
+                    @Html.RenderGridRow(row, "Default")
+
+                    // But you can of course use a view based on the name of the row
+                    //@Html.RenderGridRow(row)
+
+                }
+            </div>
+        }
+    </div>
+
+}

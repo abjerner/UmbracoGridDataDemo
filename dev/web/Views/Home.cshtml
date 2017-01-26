@@ -1,6 +1,8 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@using Skybrud.Umbraco.GridData.Extensions
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";
 }
 
-@CurrentPage.GetGridHtml("content", "fanoe")
+@*@CurrentPage.GetGridHtml("content", "fanoe")*@
+@Html.GetTypedGridHtml(Model.Content, "content", "fanoe")

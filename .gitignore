@@ -6,3 +6,4 @@ dev/web/bin/
 dev/web/obj/
 dev/code/bin/
 dev/code/obj/
+dev/web/App_Data/cache/
