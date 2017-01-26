@@ -1,0 +1,8 @@
+dev/packages/
+dev/web/App_Data/Logs/
+dev/web/App_Data/TEMP/
+dev/web/App_Data/NuGetBackup/
+dev/web/bin/
+dev/web/obj/
+dev/code/bin/
+dev/code/obj/
